@@ -12,10 +12,9 @@ public class Servlet1 extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String value = getInitParameter("initParam1");
-        
         response.setContentType("text/html; charster=UTF-8");
         response.setCharacterEncoding("UTF-8");
+        String value = getInitParameter("activeTab"); //получение параметров инициализации
         PrintWriter out = response.getWriter();
         Locale locale = new Locale("");
         String lang = request.getParameter("lang");
@@ -69,11 +68,25 @@ public class Servlet1 extends HttpServlet {
         out.println("        <div id='right'>");
         out.println("            <p style='color: red; font-weight: lighter; font-size: 30pt'> EUR 2.130,00 </p>");
         out.println("");
+        if (value.equals("1")) {
         out.println("            <ul id='Tabs'>");
         out.println("                <li id='ThreeTab' class='Tab'><a href='#Three' onclick='Three(); return false;'>" + bundles.getString("Tab3") + "</a></li>");
         out.println("                <li id='TwoTab' class='Tab'><a href='#Two' onclick='Two(); return false;'>" + bundles.getString("Tab2") + "</a></li>");
         out.println("                <li id='OneTab' class='SelectedTab'><a href='#One' onclick='One(); return false;'>" + bundles.getString("Tab1") + "</a></li>");
         out.println("            </ul>");
+        }else if (value.equals("2")) {
+        out.println("            <ul id='Tabs'>");
+        out.println("                <li id='ThreeTab' class='Tab'><a href='#Three' onclick='Three(); return false;'>" + bundles.getString("Tab3") + "</a></li>");
+        out.println("                <li id='TwoTab' class='SelectedTab'><a href='#Two' onclick='Two(); return false;'>" + bundles.getString("Tab2") + "</a></li>");
+        out.println("                <li id='OneTab' class='Tab'><a href='#One' onclick='One(); return false;'>" + bundles.getString("Tab1") + "</a></li>");
+        out.println("            </ul>");
+        }else{
+        out.println("            <ul id='Tabs'>");
+        out.println("                <li id='ThreeTab' class='SelectedTab'><a href='#Three' onclick='Three(); return false;'>" + bundles.getString("Tab3") + "</a></li>");
+        out.println("                <li id='TwoTab' class='Tab'><a href='#Two' onclick='Two(); return false;'>" + bundles.getString("Tab2") + "</a></li>");
+        out.println("                <li id='OneTab' class='Tab'><a href='#One' onclick='One(); return false;'>" + bundles.getString("Tab1") + "</a></li>");
+        out.println("            </ul>");
+        }
         out.println("");
         out.println("            <!-- Содержимое вкладок -->");
         out.println("            <div id='Content'>");
