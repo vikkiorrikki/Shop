@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Locale;
@@ -6,6 +11,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author Vikki
+ */
 
 public class Servlet1 extends HttpServlet {
 
@@ -22,10 +32,10 @@ public class Servlet1 extends HttpServlet {
         String enClass = new String();
         String itClass = new String();
         if(lang != null) {
-            if(lang.equals("en")) {
+            if(lang.equals("ENG")) {
                 locale = Locale.US;
                 enClass = "class='active'";
-            } else if(lang.equals("it")) {
+            } else if(lang.equals("IT")) {
                 locale = Locale.ITALY;
                 itClass = "class='active'";
             } else {
@@ -34,6 +44,12 @@ public class Servlet1 extends HttpServlet {
         } else {
             ruClass  = "class='active'";
         }
+        String id = request.getParameter("id");
+        boolean isId1 = id != null && id.equals("1");
+        String price = isId1 ? "EUR 2.130,00" : "EUR 3.375,00";
+        String photoFileName = isId1 ? "IMG-file/bag.JPG" : "IMG-file/bag1.JPG";
+        String propName = isId1 ? "NameBag" : "NameBag1";
+        
         ResourceBundle bundles = ResourceBundle.getBundle("myprop", locale);
         out.println("<!DOCTYPE html>");
         out.println("<!--");
@@ -46,27 +62,27 @@ public class Servlet1 extends HttpServlet {
         out.println("        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>");
         out.println("        <title>" + bundles.getString("Title") + "</title>");
         out.println("        <meta name='viewport' content='width=device-width, initial-scale=1.0'>");
-        out.println("        <link rel='stylesheet' type='text/css' href='style.css'>");
+        out.println("        <link rel='stylesheet' type='text/css' href='CSS-file/style.css'>");
         out.println("    </head>");
         out.println("    <body>");
         out.println("        <div id='header'>");
         out.println("            <p><font color='black' face='Calibri' size='350%'> HandBag </font>");
         out.println("            <div id='ButtonL' class='switch-lang'>");
         out.println("            <ul>");
-        out.println("               <li><a " + ruClass + "href='Servlet1?lang=ru'>РУС</a></li>");
-        out.println("               <li><a " + enClass + " href='Servlet1?lang=en'>ENG</a></li>");
-        out.println("               <li><a " + itClass + " href='Servlet1?lang=it'>IT</a></li>");
+        out.println("               <li><a " + ruClass + "href='Servlet1?lang=RU'>РУС</a></li>");
+        out.println("               <li><a " + enClass + " href='Servlet1?lang=ENG'>ENG</a></li>");
+        out.println("               <li><a " + itClass + " href='Servlet1?lang=IT'>IT</a></li>");
         out.println("           </ul>");
         out.println("           </div></p>");
         out.println("        </div>");
         out.println("");
         out.println("        <div id='left'>");
-        out.println("            <p style='color:black; font-size: 20pt'>" + bundles.getString("NameBag") + "</p>");
-        out.println("            <p><img src='bag.JPG' alt='Photo'></p>");
+        out.println("            <p style='color:black; font-size: 20pt'>" + bundles.getString(propName) + "</p>");
+        out.println("            <p><img src='" + photoFileName + "' alt='Photo'></p>");
         out.println("        </div>");
         out.println("");
         out.println("        <div id='right'>");
-        out.println("            <p style='color: red; font-weight: lighter; font-size: 30pt'> EUR 2.130,00 </p>");
+        out.println("            <p style='color: red; font-weight: lighter; font-size: 30pt'>" + price +" </p>");
         out.println("");
         if (value.equals("1")) {
         out.println("            <ul id='Tabs'>");
@@ -166,3 +182,4 @@ public class Servlet1 extends HttpServlet {
 
     }
 }
+

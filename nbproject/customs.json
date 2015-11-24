@@ -1,0 +1,11 @@
+{
+    "elements": {},
+    "attributes": {
+        "name": {
+            "context": "li"
+        },
+        "value": {
+            "context": "li"
+        }
+    }
+}
