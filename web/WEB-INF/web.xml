@@ -11,9 +11,28 @@
             <param-value>2</param-value>
         </init-param>
     </servlet>
+    <servlet>
+        <servlet-name>Cart</servlet-name>
+        <servlet-class>Cart</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet1</servlet-name>
         <url-pattern>/Servlet1</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>newjsp</servlet-name>
+        <!--<servlet-class>Servlet1</servlet-class>-->
+        <jsp-file>/JSP-file/newjsp.jsp</jsp-file>
+    
+        j
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>newjsp</servlet-name>
+        <url-pattern>/productList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Cart</servlet-name>
+        <url-pattern>/Cart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

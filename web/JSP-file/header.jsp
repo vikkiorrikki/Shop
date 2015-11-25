@@ -9,28 +9,28 @@
     <body>   
         <%
             Cookie[] cookies = request.getCookies();
-            String optForL = request.getParameter("optForL");
+            String lang = request.getParameter("lang");
             ResourceBundle resourceBundle= ResourceBundle.getBundle("LocaleFiles.Text", request.getLocale());
-            if(optForL == null || optForL.isEmpty()){
+            if(lang == null || lang.isEmpty()){
                 if (cookies != null) {
                     for (Cookie item : cookies) {
-                        if (item.getName().equals("optForL")) {
-                            optForL = item.getValue();
-                            if((optForL == null)){
-                                optForL = "RU";
+                        if (item.getName().equals("lang")) {
+                            lang = item.getValue();
+                            if((lang == null)){
+                                lang = "RU";
                             }
                             break;
                         }
                     }
                 } else {
-                    optForL = "RU";
+                    lang = "RU";
                 }
             }
-            if ((optForL.equals("RU"))){
+            if ((lang.equals("RU"))){
                 resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_ru_RU", request.getLocale());
-            } else if (optForL.equals("ENG")) {
+            } else if (lang.equals("ENG")) {
                 resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_en_US", Locale.US);
-            } else if (optForL.equals("IT")) {
+            } else if (lang.equals("IT")) {
                 resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_it_IT", Locale.ITALY);
             } 
             
@@ -41,13 +41,17 @@
                     background-color: #deedfb'>
             <p><font color='black' face='Calibri' size='350%'> HandBag </font>
                 <button style='float: right'><%=resourceBundle.getString("List")%></button>
-                <a onclick="window.location.href='/Shop/JSP-file/cart.jsp?product=<%=request.getParameter("productId")%>'"><button style='float: right'><%=resourceBundle.getString("Bag")%></button></a>
+                <a onclick="window.location.href='/Shop/Cart'">
+                    <button style='float: right'><%=resourceBundle.getString("Bag")%></button></a>
                 <button style='float: right'><%=resourceBundle.getString("Login")%></button>
+                <a onclick="window.location.href='/Shop'">
+                    <button style='float: right'>Home</button></a>
+                
             </p>
                 <form method=GET action='' style='float: right'>                        
-                    <input name='optForL' type='submit' value='RU' style='float: right'/><br>
-                    <input name='optForL' type='submit' value='ENG' style='float: right'/><br>
-                    <input name='optForL' type='submit' value='IT' style='float: right'/>
+                    <input name='lang' type='submit' value='RU' style='float: right'/><br>
+                    <input name='lang' type='submit' value='ENG' style='float: right'/><br>
+                    <input name='lang' type='submit' value='IT' style='float: right'/>
                 </form>
         </div>
  

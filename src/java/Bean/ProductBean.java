@@ -2,6 +2,8 @@ package Bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import LocaleFiles.*;
+import java.util.ResourceBundle;
 
 public class ProductBean implements Serializable{
     
@@ -14,10 +16,13 @@ public class ProductBean implements Serializable{
     private String description2;
     private String description3;
     private String description4;
+    private Language lang;
     private int amount;
     
-    private static ArrayList<ProductBean> clothList = new ArrayList<>();
-    
+    public String getLang(){return lang.getLanguage();}
+    public void setLang(String l){
+        lang = Language.getByCode(l);
+    }
     public String getProductId() {
         return productId;
     }
@@ -89,25 +94,19 @@ public class ProductBean implements Serializable{
         this.amount = 0;
     }
     
-    public ProductBean(String productId, String groupOfProduct, String productImage,String nameBag, String price, String description1, String description2, String description3, String description4) {
+    public ProductBean(String productId, String language) {
+        setLang(language);
+        ResourceBundle resourceBundle = lang.getLocaleFile();
         this.productId = productId;
-        this.groupOfProduct = groupOfProduct;
-        this.productImage = productImage;
-        this.nameBag = nameBag;
-        this.price = price;
-        this.description1 = description1;
-        this.description2 = description2;
-        this.description3 = description3;
-        this.description4 = description4;
+        this.groupOfProduct = resourceBundle.getString("Type"+ productId);
+        this.productImage = resourceBundle.getString("ProductImage"+ productId);
+        this.nameBag = resourceBundle.getString("NameBag" + productId);
+        this.price = resourceBundle.getString("Price" + productId) ;
+        this.description1 = resourceBundle.getString("Description1"+ productId);
+        this.description2 = resourceBundle.getString("Description2"+ productId);
+        this.description3 = resourceBundle.getString("Description3"+ productId);
+        this.description4 = resourceBundle.getString("Description4"+ productId);
         this.amount = 0;
-    }
-    
-    public static void addNewProduct(String productId, String groupOfProduct, String productImage,String nameBag, String price, String description1, String description2, String description3, String description4) {
-        clothList.add(new ProductBean(productId,groupOfProduct,productImage,nameBag,price,description1,description2,description3,description4));
-    }
-   
-    public static ArrayList<ProductBean> getAllProducts() {
-        return clothList;
     }
 
 }

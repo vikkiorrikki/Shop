@@ -7,13 +7,16 @@
 <%@page import="javax.servlet.http.Cookie"%>
 <!DOCTYPE html>
 <html>
+    <head>
+        <script src="JS-file/product.js" type="text/javascript"></script>
+    </head>
     <%
         request.setCharacterEncoding("UTF-8");
         
             Cookie[] cookies = request.getCookies();
 
             ResourceBundle resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text", request.getLocale());
-            String optForL = request.getParameter("optForL");
+            String lang = request.getParameter("lang");
 
             /*String ruClass = new String();
             String enClass = new String();
@@ -22,20 +25,20 @@
             //  Если у нас есть куки
             if (cookies != null) {
                 for (Cookie item : cookies) {
-                    if (item.getName().equals("optForL")) { // Находим куки с языком и устанавливаем ей нужное нам значение
+                    if (item.getName().equals("lang")) { // Находим куки с языком и устанавливаем ей нужное нам значение
                         String valCook = item.getValue();
-                        if(valCook != null && optForL == null || (optForL.isEmpty())){
-                            optForL = valCook;
+                        if(valCook != null && lang == null || (lang.isEmpty())){
+                            lang = valCook;
                         }
-                        if ((optForL.equals("RU")) || (optForL.equals("undefined"))){
+                        if ((lang.equals("RU")) || (lang.equals("undefined"))){
                              resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_ru_RU", request.getLocale());
                             item.setValue("RU");
                             //ruClass = "class='active'";
-                        } else if (optForL.equals("ENG")) {
+                        } else if (lang.equals("ENG")) {
                             resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_en_US", Locale.US);
                             item.setValue("ENG");
                             //enClass = "class='active'";
-                        } else if (optForL.equals("IT")) {
+                        } else if (lang.equals("IT")) {
                             resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_it_IT", Locale.ITALY);
                             item.setValue("IT");
                            // itClass = "class='active'";
@@ -45,17 +48,17 @@
                 }
             }
             // Выбор нужного файла с языком 
-            if ((optForL == null) ||  (optForL.equals("RU")) ||  (optForL.equals("undefined"))){
+            if ((lang == null) ||  (lang.equals("RU")) ||  (lang.equals("undefined"))){
                 resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_ru_RU", request.getLocale());
-                Cookie c= new Cookie("optForL","RU");
+                Cookie c= new Cookie("lang","RU");
                 response.addCookie(c);                  
-            } else if (optForL.equals("ENG")) {
+            } else if (lang.equals("ENG")) {
                 resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_en_US", Locale.US);
-                Cookie c= new Cookie("optForL","ENG");
+                Cookie c= new Cookie("lang","ENG");
                 response.addCookie(c);
-            } else if (optForL.equals("IT")) {
+            } else if (lang.equals("IT")) {
                 resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_it_IT", Locale.ITALY);
-                Cookie c= new Cookie("optForL","IT");
+                Cookie c= new Cookie("lang","IT");
                 response.addCookie(c);
             }          
          %>
@@ -79,9 +82,9 @@
                         return vars;
                     }                                                       
                     function itemsChanged(){
-                        var l = getUrlVars()["optForL"];
+                        var l = getUrlVars()["lang"];
                         var value = document.getElementsByTagName('select')[0].value;
-                        window.location='?value='+value+"&optForL="+l; 
+                        window.location='?value='+value+"&lang="+l; 
                     }                   
                 </script> 
                 
@@ -166,142 +169,24 @@
                         </select>
                     </div>
         <div id="left" style='width:  80%; height: 80%; float: left'>
-                       <%    
-                ProductBean.addNewProduct("1","bags",resourceBundle.getString("ProductImage1"),
-                                                    resourceBundle.getString("NameBag1"),
-                                                    resourceBundle.getString("Price1"),
-                                                    resourceBundle.getString("Description11"),
-                                                    resourceBundle.getString("Description21"),
-                                                    resourceBundle.getString("Description31"),
-                                                    resourceBundle.getString("Description41"));
-                ProductBean.addNewProduct("2","bags",resourceBundle.getString("ProductImage2"),
-                                                    resourceBundle.getString("NameBag2"),
-                                                    resourceBundle.getString("Price2"),
-                                                    resourceBundle.getString("Description12"),
-                                                    resourceBundle.getString("Description22"),
-                                                    resourceBundle.getString("Description32"),
-                                                    resourceBundle.getString("Description42"));
-                ProductBean.addNewProduct("3","clutches",resourceBundle.getString("ProductImage3"),
-                                                    resourceBundle.getString("NameBag3"),
-                                                    resourceBundle.getString("Price3"),
-                                                    resourceBundle.getString("Description13"),
-                                                    resourceBundle.getString("Description23"),
-                                                    resourceBundle.getString("Description33"),
-                                                    resourceBundle.getString("Description43"));
-                ProductBean.addNewProduct("4","clutches",resourceBundle.getString("ProductImage4"),
-                                                    resourceBundle.getString("NameBag4"),
-                                                    resourceBundle.getString("Price4"),
-                                                    resourceBundle.getString("Description14"),
-                                                    resourceBundle.getString("Description24"),
-                                                    resourceBundle.getString("Description34"),
-                                                    resourceBundle.getString("Description44"));
-                ProductBean.addNewProduct("5","backpacks",resourceBundle.getString("ProductImage5"),
-                                                    resourceBundle.getString("NameBag5"),
-                                                    resourceBundle.getString("Price5"),
-                                                    resourceBundle.getString("Description15"),
-                                                    resourceBundle.getString("Description25"),
-                                                    resourceBundle.getString("Description35"),
-                                                    resourceBundle.getString("Description45"));
-                ProductBean.addNewProduct("6","clutches",  resourceBundle.getString("ProductImage6"),
-                                                    resourceBundle.getString("NameBag6"),
-                                                    resourceBundle.getString("Price6"),
-                                                    resourceBundle.getString("Description16"),
-                                                    resourceBundle.getString("Description26"),
-                                                    resourceBundle.getString("Description36"),
-                                                    resourceBundle.getString("Description46"));
-                ProductBean.addNewProduct("7","backpacks",  resourceBundle.getString("ProductImage7"),
-                                                    resourceBundle.getString("NameBag7"),
-                                                    resourceBundle.getString("Price7"),
-                                                    resourceBundle.getString("Description17"),
-                                                    resourceBundle.getString("Description27"),
-                                                    resourceBundle.getString("Description37"),
-                                                    resourceBundle.getString("Description47"));
-                ProductBean.addNewProduct("8","clutches",  resourceBundle.getString("ProductImage8"),
-                                                    resourceBundle.getString("NameBag8"),
-                                                    resourceBundle.getString("Price8"),
-                                                    resourceBundle.getString("Description18"),
-                                                    resourceBundle.getString("Description28"),
-                                                    resourceBundle.getString("Description38"),
-                                                    resourceBundle.getString("Description48"));
-                ProductBean.addNewProduct("9","bags",  resourceBundle.getString("ProductImage9"),
-                                                    resourceBundle.getString("NameBag9"),
-                                                    resourceBundle.getString("Price9"),
-                                                    resourceBundle.getString("Description19"),
-                                                    resourceBundle.getString("Description29"),
-                                                    resourceBundle.getString("Description39"),
-                                                    resourceBundle.getString("Description49"));
-                
-                //ArrayList<CardBean> clothList = CardBean.getAllProducts();
+                       <%   
                 // Список товаров            
-                ArrayList<ProductBean> clothList = new ArrayList<>();
-                clothList.add(new ProductBean("1","bags",resourceBundle.getString("ProductImage1"),
-                                                    resourceBundle.getString("NameBag1"),
-                                                    resourceBundle.getString("Price1"),
-                                                    resourceBundle.getString("Description11"),
-                                                    resourceBundle.getString("Description21"),
-                                                    resourceBundle.getString("Description31"),
-                                                    resourceBundle.getString("Description41")));
-                clothList.add(new ProductBean("2","bags",resourceBundle.getString("ProductImage2"),
-                                                    resourceBundle.getString("NameBag2"),
-                                                    resourceBundle.getString("Price2"),
-                                                    resourceBundle.getString("Description12"),
-                                                    resourceBundle.getString("Description22"),
-                                                    resourceBundle.getString("Description32"),
-                                                    resourceBundle.getString("Description42")));
-                clothList.add(new ProductBean("3","clutches",resourceBundle.getString("ProductImage3"),
-                                                    resourceBundle.getString("NameBag3"),
-                                                    resourceBundle.getString("Price3"),
-                                                    resourceBundle.getString("Description13"),
-                                                    resourceBundle.getString("Description23"),
-                                                    resourceBundle.getString("Description33"),
-                                                    resourceBundle.getString("Description43")));
-                clothList.add(new ProductBean("4","clutches",resourceBundle.getString("ProductImage4"),
-                                                    resourceBundle.getString("NameBag4"),
-                                                    resourceBundle.getString("Price4"),
-                                                    resourceBundle.getString("Description14"),
-                                                    resourceBundle.getString("Description24"),
-                                                    resourceBundle.getString("Description34"),
-                                                    resourceBundle.getString("Description44")));
-                clothList.add(new ProductBean("5","backpacks",resourceBundle.getString("ProductImage5"),
-                                                    resourceBundle.getString("NameBag5"),
-                                                    resourceBundle.getString("Price5"),
-                                                    resourceBundle.getString("Description15"),
-                                                    resourceBundle.getString("Description25"),
-                                                    resourceBundle.getString("Description35"),
-                                                    resourceBundle.getString("Description45")));
-                clothList.add(new ProductBean("6","clutches",  resourceBundle.getString("ProductImage6"),
-                                                    resourceBundle.getString("NameBag6"),
-                                                    resourceBundle.getString("Price6"),
-                                                    resourceBundle.getString("Description16"),
-                                                    resourceBundle.getString("Description26"),
-                                                    resourceBundle.getString("Description36"),
-                                                    resourceBundle.getString("Description46")));
-                clothList.add(new ProductBean("7","backpacks",  resourceBundle.getString("ProductImage7"),
-                                                    resourceBundle.getString("NameBag7"),
-                                                    resourceBundle.getString("Price7"),
-                                                    resourceBundle.getString("Description17"),
-                                                    resourceBundle.getString("Description27"),
-                                                    resourceBundle.getString("Description37"),
-                                                    resourceBundle.getString("Description47")));
-                clothList.add(new ProductBean("8","clutches",  resourceBundle.getString("ProductImage8"),
-                                                    resourceBundle.getString("NameBag8"),
-                                                    resourceBundle.getString("Price8"),
-                                                    resourceBundle.getString("Description18"),
-                                                    resourceBundle.getString("Description28"),
-                                                    resourceBundle.getString("Description38"),
-                                                    resourceBundle.getString("Description48")));
-                clothList.add(new ProductBean("9","bags",  resourceBundle.getString("ProductImage9"),
-                                                    resourceBundle.getString("NameBag9"),
-                                                    resourceBundle.getString("Price9"),
-                                                    resourceBundle.getString("Description19"),
-                                                    resourceBundle.getString("Description29"),
-                                                    resourceBundle.getString("Description39"),
-                                                    resourceBundle.getString("Description49")));                
+                ArrayList<ProductBean> clothList = new ArrayList<>();     
+                clothList.add(new ProductBean("1", lang));
+                clothList.add(new ProductBean("2", lang));
+                clothList.add(new ProductBean("3", lang));
+                clothList.add(new ProductBean("4", lang));
+                clothList.add(new ProductBean("5", lang));
+                clothList.add(new ProductBean("6", lang));
+                clothList.add(new ProductBean("7", lang));
+                clothList.add(new ProductBean("8", lang));
+                clothList.add(new ProductBean("9", lang));
+                
                 // Пробегаем по списку с товарами, чтобы отобразить необходимые по заданному фильтру
             for(ProductBean cloth : clothList) {
                 if (request.getParameter("value") != null) {
                     if ((cloth.getGroupOfProduct().equals(request.getParameter("value"))) || (request.getParameter("value") == null) || (request.getParameter("value").equals("all"))){%>
-                                    <jsp:include page="product.jsp"> 
+                                    <jsp:include page="/JSP-file/product.jsp"> 
                                         <jsp:param name="productId" value="<%=cloth.getProductId() %>"/> 
                                         <jsp:param name="nameBag" value="<%=cloth.getNameBag()%>"/> 
                                         <jsp:param name="productImage" value="<%=cloth.getProductImageFull()%>"/> 
@@ -324,7 +209,7 @@
                     }
                     
                     if ((val == null) || val.isEmpty() || (cloth.getGroupOfProduct().equals(val)) || (val.equals("all"))){%>
-                                    <jsp:include page="product.jsp"> 
+                                    <jsp:include page="/JSP-file/product.jsp"> 
                                         <jsp:param name="productId" value="<%=cloth.getProductId() %>"/> 
                                         <jsp:param name="nameBag" value="<%=cloth.getNameBag()%>"/> 
                                         <jsp:param name="productImage" value="<%=cloth.getProductImageFull()%>"/> 
