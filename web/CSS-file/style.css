@@ -74,4 +74,10 @@ ul#Tabs {
     padding: 5px;
     cursor: default;
 }
-
+A {
+ text-decoration: none; /* Убирает подчеркивание для ссылок */
+} 
+A:hover { 
+ text-decoration: underline; /* Добавляем подчеркивание при наведении курсора на ссылку */
+ color: red; /* Ссылка красного цвета */
+} 

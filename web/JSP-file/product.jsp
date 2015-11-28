@@ -45,15 +45,13 @@
         <p><img src='<%=request.getParameter("productImage")%>' alt='Photo' width="250" height="175"></p></div>
             
     <div id="right-mini" style='width: 60%; height: 100%; float: left'> 
-        <p style="color: red; font-weight: lighter; font-size: 15pt"><%=request.getParameter("price")%></p>
+        <p style="color: red; font-weight: lighter; font-size: 15pt">EUR <%=request.getParameter("price")%></p>
         <p><font color='black' size='3pt' face='Calibri'><%=request.getParameter("description1")%></font></p>
         <p><font color='black' size='3pt' face='Calibri'><%=request.getParameter("description2")%></font></p>
         <p><font color='black' size='3pt' face='Calibri'><%=request.getParameter("description3")%></font></p>
         <p><font color='black' size='3pt' face='Calibri'><%=request.getParameter("description4")%></font></p> 
         <p style='text-align: left'>
-            <!--<button onclick="window.location.href='/Shop/JSP-file/cart.jsp?product=<%=request.getParameter("productId")%>'"><%=resourceBundle.getString("Buy")%></button>-->
-            <button id="OrderButton" class="OrderButton" 
-                    onclick="addToCart('<%=request.getParameter("productId")%>', this, '<%=resourceBundle.getString("AddToCart")%>')">
+            <button onclick="addToCart('<%=request.getParameter("productId")%>', this, '<%=resourceBundle.getString("AddToCart")%>')">
                 <%=resourceBundle.getString("Buy")%>
             </button>
         </p>

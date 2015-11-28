@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package LocaleFiles;
 
 import java.util.ArrayList;
@@ -10,10 +5,6 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.servlet.http.Cookie;
 
-/**
- *
- * @author garadagly
- */
 public enum Language {
 
     RU("RU", "RU"), EN("ENG", "ENG"), IT("IT", "IT");

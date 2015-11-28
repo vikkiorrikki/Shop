@@ -35,39 +35,37 @@
 
 <fmt:setBundle basename="myprop" />
 
-<div class="cartelem" >
-    <div class="cartproductImg" > 
-        <img src="${ ProductImage }" height=100 width=100 />
+<div>
+    <div id="left-mini" style="width: 40%; height: 100%; float: left">
+        <a href='${pageContext.request.contextPath}/Servlet1?lang=${param.lang}&id=${beanId}'>
+            <font color='black' size='4pt' face='Calibri'><c:out value="${ nameBag }" /></font>
+        </a>
+        <p><img src="IMG-file/${ productImage }" alt='Photo' width="250" height="175" /></p>
         <a href="Servlet1?id=${ beanId }" > </a>
     </div>
-
-    <div class="cartelementProductName">
-
-        <a class="cartelementLink" href='${pageContext.request.contextPath}/Servlet1?id="${beanId}"'>
-            <c:out value="${ nameBag }" />
-        </a>
+ 
+    <div id="right-mini" style='width: 30%; height: 100%; float: left'>
+        <p style="color: red; font-weight: lighter; font-size: 15pt"><c:out value="EUR ${ price }" /></p>
+        <p><font color='black' size='2pt' face='Calibri'><c:out value="${ description1 }" /></font></p>
+        <p><font color='black' size='2pt' face='Calibri'><c:out value="${ description2 }" /></font></p>
+        <p><font color='black' size='2pt' face='Calibri'><c:out value="${ description3 }" /></font></p>
+        <p><font color='black' size='2pt' face='Calibri'><c:out value="${ description4 }" /></font></p>
     </div>
 
-    <div class="cartelementProductProperties" >
-        <c:out value="${ description1 }" />
-    </div>
-
-    <div class="cartproductPriceAndButton">
-        <div class="cartproductPrice">
-            <c:out value=" ${ price }" />
-        </div>
+    <div id="right-mini" style='width: 30%; height: 100%; float: left'>    
         <form>
-            <label>
-                ${resources.CartProductCount}:
+            <label><font color='black' size='3pt' face='Calibri'>
+                ${resources.CartProductCount}:</font>
                 <input type="number" min="1" max="20" 
                        size="5" value="1" onchange="calc('${ price }', 'summ_', '${beanId}', this)">
             </label>
-           <label>${resources.FinalPrice}:</label>
-           <label id="summ_${beanId}">
-               ${price}
-           </label>
-         </form>
-        <div class="cartDeleteButton">
+            <p><label><font color='black' size='3pt' face='Calibri'>${resources.FinalPrice}:</font></label>
+            <label id="summ_${beanId}" style='color: red'>
+                ${price}
+            </label></p>
+        </form>
+            
+        <div>
             <button onclick="deleteFromCart('${beanId}')" >${resources.DeleteFromCartButton}</button>
         </div>
     </div>

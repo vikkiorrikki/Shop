@@ -13,10 +13,13 @@ public class Text_ru_RU extends ListResourceBundle {
                                         {"Backpacks","Рюкзаки"},
                                         {"Title","Список товаров"},
                                         {"Buy","Купить"},
-                                        {"FinalPrice", "Цена"},
+                                        {"FinalPrice", "Общая цена"},
                                         {"AddToCart","Добавлено"},
                                         {"CartProductCount", "Товаров в корзине"},
                                         {"DeleteFromCartButton", "Удалить"},
+                                        {"NotAuthBuy", "Не авторизовались"},
+                                        {"AuthBuy", "Авторизуйтесь"},
+                                        {"ForOrder", "Для заказа "},
                                         // Card1
                                         {"NameBag1","Разноцветная сумка SICILY"},
                                         {"ProductImage1","IMG-file/bag-mini.JPG"},
@@ -29,7 +32,7 @@ public class Text_ru_RU extends ListResourceBundle {
                                         // Card2
                                         {"NameBag2","Средняя сумка SICILY"},
                                         {"ProductImage2","IMG-file/bag1-mini.JPG"},
-                                        {"Price2","3175"},
+                                        {"Price2","3375"},
                                         {"Description12","Цвет: White"},                                        
                                         {"Description22","Размер: 26x21x12 см"},                                       
                                         {"Description32","Состав Снаружи Лаковая кожа"},

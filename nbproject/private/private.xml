@@ -3,9 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/5s/web/Shop/src/java/Servlet1.java</file>
-            <file>file:/D:/5s/web/Shop/web/JSP-file/product.jsp</file>
+            <file>file:/D:/5s/web/Shop/web/JS-file/product.js</file>
+            <file>file:/D:/5s/web/Shop/src/java/Cart.java</file>
             <file>file:/D:/5s/web/Shop/web/JSP-file/newjsp.jsp</file>
+            <file>file:/D:/5s/web/Shop/web/JSP-file/cart.jsp</file>
+            <file>file:/D:/5s/web/Shop/src/java/LocaleFiles/Text_ru_RU.java</file>
+            <file>file:/D:/5s/web/Shop/src/java/LocaleFiles/Text_it_IT.java</file>
+            <file>file:/D:/5s/web/Shop/web/JSP-file/product.jsp</file>
+            <file>file:/D:/5s/web/Shop/web/JSP-file/productCart.jsp</file>
+            <file>file:/D:/5s/web/Shop/web/JSP-file/header.jsp</file>
+            <file>file:/D:/5s/web/Shop/src/java/LocaleFiles/Text_en_US.java</file>
+            <file>file:/D:/5s/web/Shop/src/java/Servlet1.java</file>
+            <file>file:/D:/5s/web/Shop/web/JS-file/cart.js</file>
         </group>
     </open-files>
 </project-private>

@@ -46,9 +46,11 @@ public class Servlet1 extends HttpServlet {
         }
         String id = request.getParameter("id");
         boolean isId1 = id != null && id.equals("1");
-        String price = isId1 ? "EUR 2.130,00" : "EUR 3.375,00";
+        String price = isId1 ? "EUR 2130" : "EUR 3375";
         String photoFileName = isId1 ? "IMG-file/bag.JPG" : "IMG-file/bag1.JPG";
         String propName = isId1 ? "NameBag" : "NameBag1";
+        String url2 = "http://localhost:8080/Shop/Cart?lang=" + lang;
+        String url1 = "http://localhost:8080/Shop/?lang=" + lang;
         
         ResourceBundle bundles = ResourceBundle.getBundle("myprop", locale);
         out.println("<!DOCTYPE html>");
@@ -59,6 +61,7 @@ public class Servlet1 extends HttpServlet {
         out.println("-->");
         out.println("<html>");
         out.println("    <head>");
+        out.println("        <script src='JS-file/product.js'></script>");
         out.println("        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>");
         out.println("        <title>" + bundles.getString("Title") + "</title>");
         out.println("        <meta name='viewport' content='width=device-width, initial-scale=1.0'>");
@@ -66,7 +69,10 @@ public class Servlet1 extends HttpServlet {
         out.println("    </head>");
         out.println("    <body>");
         out.println("        <div id='header'>");
-        out.println("            <p><font color='black' face='Calibri' size='350%'> HandBag </font>");
+        out.println("            <p><a href='" + url1 + "'><font color='black' face='Calibri' size='350%'> HandBag </font></a>");
+        out.println("            <a onclick=\"window.location.href='" + url2 + "'\">" +
+"                                <button style='float: right'>" + bundles.getString("Bag") + "</button></a>");
+        
         out.println("            <div id='ButtonL' class='switch-lang'>");
         out.println("            <ul>");
         out.println("               <li><a " + ruClass + "href='Servlet1?lang=RU'>РУС</a></li>");
@@ -168,12 +174,20 @@ public class Servlet1 extends HttpServlet {
         out.println("              document.getElementById('One').style.display = 'none';");
         out.println("              document.getElementById('Two').style.display = 'none';");
         out.println("              document.getElementById('Three').style.display = 'block';");
+        
         out.println("");
         out.println("            }");
         out.println("            </script>");
         out.println("");
-        out.println("            <p style='text-align: center'><button>" + bundles.getString("Buy") + "</button>");
-        out.println("        </div>");
+        out.println("            <p style='text-align: center'>"
+                + "<button "
+                + "onclick=\"addToCart("
+                +            "'" + id + "', this, '" + bundles.getString("AddToCart") + "'"
+                +           ")"
+                + "\">"
+                + bundles.getString("Buy")
+                + "</button>");
+        out.println("        </div>"); 
         out.println("");
         out.println("    </body>");
         out.println("</html>");

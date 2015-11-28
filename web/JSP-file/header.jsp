@@ -5,6 +5,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+            <style type="text/css">
+                A {
+                 text-decoration: none; /* Убирает подчеркивание для ссылок */
+                } 
+                A:hover { 
+                 text-decoration: underline; /* Добавляем подчеркивание при наведении курсора на ссылку */
+                 color: red; /* Ссылка красного цвета */
+                } 
+            </style>
     </head>
     <body>   
         <%
@@ -33,19 +42,19 @@
             } else if (lang.equals("IT")) {
                 resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_it_IT", Locale.ITALY);
             } 
-            
+            String url1 = "http://localhost:8080/Shop/?lang=" + lang;
+            String url2 = "http://localhost:8080/Shop/Cart?lang=" + lang;
         %>
         
         <div style='width: 100%;
                     height: 80px;
                     background-color: #deedfb'>
-            <p><font color='black' face='Calibri' size='350%'> HandBag </font>
+            <p><a href='<%= url1%>'><font color='black' face='Calibri' size='350%'> HandBag </font></a>
                 <button style='float: right'><%=resourceBundle.getString("List")%></button>
-                <a onclick="window.location.href='/Shop/Cart'">
+                <a onclick="window.location.href='<%= url2%>'">
                     <button style='float: right'><%=resourceBundle.getString("Bag")%></button></a>
                 <button style='float: right'><%=resourceBundle.getString("Login")%></button>
-                <a onclick="window.location.href='/Shop'">
-                    <button style='float: right'>Home</button></a>
+                
                 
             </p>
                 <form method=GET action='' style='float: right'>                        
@@ -54,6 +63,5 @@
                     <input name='lang' type='submit' value='IT' style='float: right'/>
                 </form>
         </div>
- 
     </body>
 </html>

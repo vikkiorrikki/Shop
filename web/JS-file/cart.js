@@ -1,10 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 function deleteFromCart(id){
     if(id !== undefined && id !== null){
         var url = "http://" + window.location.host + window.location.pathname;
