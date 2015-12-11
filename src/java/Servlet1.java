@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import LocaleFiles.*;
+import java.util.ListResourceBundle;
 
 /**
  *
@@ -31,24 +33,38 @@ public class Servlet1 extends HttpServlet {
         String ruClass = new String();
         String enClass = new String();
         String itClass = new String();
+        ListResourceBundle bund = null;
         if(lang != null) {
             if(lang.equals("ENG")) {
                 locale = Locale.US;
                 enClass = "class='active'";
+                bund = new Text_en_US();
             } else if(lang.equals("IT")) {
                 locale = Locale.ITALY;
                 itClass = "class='active'";
+                bund = new Text_it_IT();
             } else {
                 ruClass  = "class='active'";
+                bund = new Text_ru_RU();
             }
         } else {
             ruClass  = "class='active'";
+            bund = new Text_ru_RU();
         }
         String id = request.getParameter("id");
+        /*String NameBag =  "NameBag" + id;
+        String ProductImage ="ProductImage"  + id;
+        String Price ="Price" + id; 
+        String Description1 = "Description1" + id;                  
+        String Description2 = "Description2" + id;                 
+        String Description3 ="Description3" + id;
+        String Description4 ="Description4" + id;
+        String Type ="Type" + id; 
+        
         boolean isId1 = id != null && id.equals("1");
         String price = isId1 ? "EUR 2130" : "EUR 3375";
         String photoFileName = isId1 ? "IMG-file/bag.JPG" : "IMG-file/bag1.JPG";
-        String propName = isId1 ? "NameBag" : "NameBag1";
+        String propName = isId1 ? "NameBag" : "NameBag1";*/
         String url2 = "http://localhost:8080/Shop/Cart?lang=" + lang;
         String url1 = "http://localhost:8080/Shop/?lang=" + lang;
         
@@ -83,12 +99,12 @@ public class Servlet1 extends HttpServlet {
         out.println("        </div>");
         out.println("");
         out.println("        <div id='left'>");
-        out.println("            <p style='color:black; font-size: 20pt'>" + bundles.getString(propName) + "</p>");
-        out.println("            <p><img src='" + photoFileName + "' alt='Photo'></p>");
+        out.println("            <p style='color:black; font-size: 20pt'>" + bund.getString("NameBag" + id) + "</p>");
+        out.println("            <p><img src='" + bund.getString("ProductImage" + id) + "' alt='Photo'></p>");
         out.println("        </div>");
         out.println("");
         out.println("        <div id='right'>");
-        out.println("            <p style='color: red; font-weight: lighter; font-size: 30pt'>" + price +" </p>");
+        out.println("            <p style='color: red; font-weight: lighter; font-size: 30pt'>EUR " + bund.getString("Price" + id) +" </p>");
         out.println("");
         if (value.equals("1")) {
         out.println("            <ul id='Tabs'>");
@@ -113,16 +129,15 @@ public class Servlet1 extends HttpServlet {
         out.println("            <!-- Содержимое вкладок -->");
         out.println("            <div id='Content'>");
         out.println("                <!-- Первая -->");
-        out.println("                <div id='One'>");
-        out.println("                    <p>" + bundles.getString("Description1") + "</p>");
-        out.println("                    <p>" + bundles.getString("Description2") + "</p>");
-        out.println("                    <p>" + bundles.getString("Description3") + "</p>");
-        out.println("                    <p>" + bundles.getString("Description4") + "</p>");
-        out.println("                    <p>" + bundles.getString("Description5") + "</p>");
+        out.println("                <div id='One'  style='display: none;'>");
+        out.println("                    <p>" + bund.getString("Description1" + id) + "</p>");
+        out.println("                    <p>" + bund.getString("Description2" + id) + "</p>");
+        out.println("                    <p>" + bund.getString("Description3" + id) + "</p>");
+        out.println("                    <p>" + bund.getString("Description4" + id) + "</p>");
         out.println("                </div>");
         out.println("");
         out.println("                <!-- Вторая -->");
-        out.println("                <div id='Two' style='display: none;'>");
+        out.println("                <div id='Two' >");
         out.println("                    <p>" + bundles.getString("Consist1") + "</p>");
         out.println("                    <p>" + bundles.getString("Consist2") + "	</p>");
         out.println("                </div>");
@@ -194,6 +209,14 @@ public class Servlet1 extends HttpServlet {
 
         out.close();
 
+    }
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+        String value = getInitParameter("activeTab");
+        PrintWriter out = response.getWriter();
+        out.print(value);
+        out.close();
     }
 }
 

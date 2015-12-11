@@ -15,28 +15,92 @@
         <servlet-name>Cart</servlet-name>
         <servlet-class>Cart</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>AuthServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet1</servlet-name>
         <url-pattern>/Servlet1</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>newjsp</servlet-name>
-        <!--<servlet-class>Servlet1</servlet-class>-->
         <jsp-file>/JSP-file/newjsp.jsp</jsp-file>
-    
-        j
+    </servlet>
+    <servlet>
+        <servlet-name>userPage</servlet-name>
+        <jsp-file>/JSP-file/userPage.jsp</jsp-file>
+        <init-param>
+            <param-name>activeTab</param-name>
+            <param-value>2</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>newjsp</servlet-name>
         <url-pattern>/productList</url-pattern>
+        <url-pattern>/enterToProducts</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Cart</servlet-name>
         <url-pattern>/Cart</url-pattern>
+        <url-pattern>/enterToCart</url-pattern>
+        
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <jsp-file>/JSP-file/auth.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>LoginError</servlet-name>
+        <jsp-file>/JSP-file/auth-error.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginError</servlet-name>
+        <url-pattern>/login-error</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/AuthServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>userPage</servlet-name>
+        <url-pattern>/userPage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>
+                ALL ACCESS
+            </web-resource-name>
+            <url-pattern>/enterToProducts</url-pattern>
+            <url-pattern>/enterToCart</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>*</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-role>
+        <role-name>*</role-name>
+    </security-role>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login</form-login-page>
+            <form-error-page>/login-error</form-error-page>
+        </form-login-config>
+    </login-config>
 </web-app>

@@ -20,6 +20,13 @@ public class Text_en_US extends ListResourceBundle {
                                         {"NotAuthBuy", "No logged in"},
                                         {"AuthBuy", "Log"},
                                         {"ForOrder", "For order "},
+                                        {"AuthEnter", "Auth"},
+                                        {"loginError", "Login error"},
+                                        {"again", "Login again"},
+                                        {"Logout", "Logout"},
+                                        {"OrderInCart", "OrderInCart"},
+                                        {"UserNameHeaderLabel", "User name"},
+                                        {"userNameLable","Пользовdddddатель"},
                                         // Card1
                                         {"NameBag1","Colorful bag SICILY"},
                                         {"ProductImage1","IMG-file/bag-mini.JPG"},

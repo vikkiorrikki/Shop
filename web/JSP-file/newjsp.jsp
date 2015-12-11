@@ -9,6 +9,7 @@
 <html>
     <head>
         <script src="JS-file/product.js" type="text/javascript"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <%
         request.setCharacterEncoding("UTF-8");
@@ -31,15 +32,15 @@
                             lang = valCook;
                         }
                         if ((lang.equals("RU")) || (lang.equals("undefined"))){
-                             resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_ru_RU", request.getLocale());
+                            // resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_ru_RU", request.getLocale());
                             item.setValue("RU");
                             //ruClass = "class='active'";
                         } else if (lang.equals("ENG")) {
-                            resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_en_US", Locale.US);
+                            //resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_en_US", Locale.US);
                             item.setValue("ENG");
                             //enClass = "class='active'";
                         } else if (lang.equals("IT")) {
-                            resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_it_IT", Locale.ITALY);
+                            //resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_it_IT", Locale.ITALY);
                             item.setValue("IT");
                            // itClass = "class='active'";
                         }
@@ -51,10 +52,12 @@
             if ((lang == null) ||  (lang.equals("RU")) ||  (lang.equals("undefined"))){
                 resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_ru_RU", request.getLocale());
                 Cookie c= new Cookie("lang","RU");
+
                 response.addCookie(c);                  
             } else if (lang.equals("ENG")) {
                 resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_en_US", Locale.US);
                 Cookie c= new Cookie("lang","ENG");
+                
                 response.addCookie(c);
             } else if (lang.equals("IT")) {
                 resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_it_IT", Locale.ITALY);
@@ -62,33 +65,19 @@
                 response.addCookie(c);
             }          
          %>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
     <title><%=resourceBundle.getString("Title")%></title>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <jsp:useBean id="ListBean" class="Bean.TypeF" scope="session"/>
+    <!--<meta name='viewport' content='width=device-width, initial-scale=1.0'>-->
+    <%--<jsp:useBean id="ListBean" class="Bean.TypeF" scope="session"/>--%>
         
     <body>
         <div id="header">
            <jsp:include page="/JSP-file/header.jsp"/> 
         </div>
                 
-        <div id="right" style='width:  20%; height: 80%; float: right'>
-           <script>
-                    function getUrlVars() {
-                        var vars = {};
-                        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-                            vars[key] = value;
-                        });
-                        return vars;
-                    }                                                       
-                    function itemsChanged(){
-                        var l = getUrlVars()["lang"];
-                        var value = document.getElementsByTagName('select')[0].value;
-                        window.location='?value='+value+"&lang="+l; 
-                    }                   
-                </script> 
+        <div id="right" style='width:  20%; height: 80%; float: right'> 
                 
-                <jsp:setProperty name="ListBean" property="id" param="value" />
+                <%--<jsp:setProperty name="ListBean" property="id" param="value" />--%>
                  
                 <%              
                     ArrayList<TypeF> clothTypeList = new ArrayList<>();

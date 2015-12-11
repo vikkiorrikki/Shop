@@ -15,10 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Vikki
- */
 public class Cart extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -85,7 +81,6 @@ public class Cart extends HttpServlet {
                 orderedPr += " " + ord;
             }
             session.setAttribute("orderderedProducts",  orderedPr );
-            session.setAttribute("orderAbility", "y");
         }
     }
 }

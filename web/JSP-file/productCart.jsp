@@ -61,7 +61,7 @@
             </label>
             <p><label><font color='black' size='3pt' face='Calibri'>${resources.FinalPrice}:</font></label>
             <label id="summ_${beanId}" style='color: red'>
-                ${price}
+                 ${price}
             </label></p>
         </form>
             

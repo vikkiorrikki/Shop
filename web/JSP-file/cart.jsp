@@ -11,7 +11,7 @@
             <c:import url="/JS-file/cart.js" />
         </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><c:out value="${resources.Bag}" /></title>
+        <title>${resources.Bag}</title>
     </head>
 
     <body onload='calcSumm("summ_")'>
@@ -19,7 +19,23 @@
             <div id="header">
                 <c:import url="/JSP-file/header.jsp" />
             </div>
-            
+                <c:if test="${ empty sessionScope.lang } ">
+                    <fmt:setLocale value="RU" />
+                </c:if>
+
+                <c:if test="${ param.lang eq 'RU' ||  sessionScope.lang eq 'RU'}">
+                    <fmt:setLocale value="RU"/>
+                    <c:set var="lang" value="${ param.lang }" scope="session" />  
+                </c:if>
+                <c:if test="${ param.lang eq 'ENG' ||  sessionScope.lang eq 'ENG' }">
+                    <fmt:setLocale value="ENG"/>
+                    <c:set var="lang" value="${ param.lang }" scope="session" />
+                </c:if>
+                <c:if test="${ param.lang eq 'IT' ||  sessionScope.lang eq 'IT' }">
+                    <fmt:setLocale value="IT"/>
+                    <c:set var="lang" value="${ param.lang }" scope="session" />
+                </c:if>
+            <c:set var="lang" value="${lang}" scope="session"  />
             <div id="left" style='width:  90%; height: 40%; float: left'>
                 <fmt:setBundle basename="myprop" />
                 <c:set var="allBeans" value="" />
@@ -44,10 +60,19 @@
             
             <label>${resources.FinalPrice}:</label>
             <label id="cartTotal" style='color: red'>0</label>
+            <c:set var="userName" value="${ sessionScope.userName }" />
             <p>
                 <label>${resources.ForOrder} </label>
-                <button>${resources.AuthBuy}</button>
+                <c:if test="${empty userName}">
+                    <a onclick="window.location.href='enterToCart'">
+                        <button>${resources.AuthBuy}</button>
+                        </a>
+                </c:if>
+                <c:if test="${not empty userName}">
+                    <button>${resources.OrderInCart}</button>
+                </c:if>
             </p>
+
             </div>    
         </div>
     </body>

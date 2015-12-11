@@ -33,6 +33,7 @@
             } else{
                 resourceBundle = ResourceBundle.getBundle("LocaleFiles.Text_ru_RU", request.getLocale());
             }
+            request.getSession().setAttribute("lang", lang);
             String url1 = "http://localhost:8080/Shop/Servlet1?lang=" + lang;
             String pid = request.getParameter("productId");
             if(pid != null && !pid.isEmpty()){

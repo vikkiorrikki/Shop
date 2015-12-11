@@ -20,6 +20,12 @@ public class Text_it_IT extends ListResourceBundle {
                                         {"NotAuthBuy", "Non sei loggato"},
                                         {"AuthBuy", "Ceppo"},
                                         {"ForOrder", "Ordine"},
+                                        {"AuthEnter", "AuthIT"},
+                                        {"loginError", "Errore di accesso"},
+                                        {"again", "Effettuare nuovamente l'accesso"},
+                                        {"Logout", "Disconnettersi"},
+                                        {"OrderInCart", "Ordine nel carrello"},
+                                        {"UserNameHeaderLabel", "Nome utente"},
                                         // Card1
                                         {"NameBag1","Multicolore borsa SICILY"},
                                         {"ProductImage1","IMG-file/bag-mini.JPG"},
