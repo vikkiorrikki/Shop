@@ -8,30 +8,50 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><c:out value="${resources.Login}" /></title>
+        
+         <c:import url="/JSP-file/header.jsp" />
+        <c:if test = "${cookie.lang.value eq 'ENG' }">
+            <fmt:setLocale value="ENG" />
+            <c:set var="lang" value="ENG" />
+            <fmt:setBundle basename="myprop_en_US" var="pageLang"/>
+        </c:if>
+        <c:if test="${cookie.lang.value == 'IT' }">
+            <fmt:setLocale value="IT" />
+            <c:set var="lang" value="IT" />
+            <fmt:setBundle basename="myprop_it_IT" var="pageLang"/>
+        </c:if>
+        <c:if test="${ cookie.lang.value eq  'RU' }">
+            <fmt:setLocale value="RU" />
+            <c:set var="lang" value="RU" />
+            <fmt:setBundle basename="myprop" var="pageLang"/>
+        </c:if>
+        
+        <c:if test = "${param.lang eq 'ENG' }">    
+            <fmt:setLocale value="ENG" />
+            <c:set var="lang" value="ENG" />
+            <fmt:setBundle basename="myprop_en_US" var="pageLang"/>
+        </c:if>
+        <c:if test="${param.lang == 'IT' }">
+            <fmt:setLocale value="IT" />
+            <c:set var="lang" value="IT" />
+            <fmt:setBundle basename="myprop_it_IT" var="pageLang" />
+        </c:if>
+        <c:if test="${param.lang eq  'RU' }">
+            <fmt:setLocale value="RU" />
+            <c:set var="lang" value="RU" />
+            <fmt:setBundle basename="myprop" var="pageLang"/>
+        </c:if>
+        
+        <title><fmt:message key="Login" bundle="${pageLang}"/></title>
 
     </head>
     <body>
-        <c:import url="/JSP-file/header.jsp" />
-        <c:if test="${ param.lang eq 'RU' ||  sessionScope.lang eq 'RU'}">
-            <fmt:setLocale value="RU"/>
-
-        </c:if>
-        <c:if test="${ param.lang eq 'ENG' ||  sessionScope.lang eq 'ENG' }">
-            <fmt:setLocale value="ENG"/>
-
-        </c:if>
-        <c:if test="${ param.lang eq 'IT' ||  sessionScope.lang eq 'IT' }">
-            <fmt:setLocale value="IT"/>
-
-        </c:if>
-            
-        <fmt:setBundle basename="myprop" />
+       
         
         <div class="welcome">
             <center>
                 <font color='red' face='Calibri' ><big><big><big>
-                                <fmt:message key="welcome"/>
+                                <fmt:message key="welcome" bundle="${pageLang}"/>
                 </big></big></big></font>
             </center>
         </div>
@@ -43,7 +63,7 @@
                 <input type="text" name="j_username" size="25" > <br><br>
                 <input type="password" name="j_password" size="25" > <br>
                 <input type="hidden" name="lang" value="${ lang }" >
-                <input class="authButton" type="submit" value="<fmt:message key="AuthEnter"/>">
+                <input class="authButton" type="submit" value="<fmt:message key="AuthEnter" bundle="${pageLang}"/>">
             </form>
 
         </div>

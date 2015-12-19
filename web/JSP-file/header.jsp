@@ -4,6 +4,51 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script type="text/javascript">
+            function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)===' ') c = c.substring(1);
+        if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+function checkCookie() {
+    var user = getCookie("username");
+    if (user !== "") {
+        alert("Welcome again " + user);
+    } else {
+        user = prompt("Please enter your name:", "");
+        if (user !== "" && user !== null) {
+            setCookie("username", user, 365);
+        }
+    }
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function onHeaderLoad() {
+    var lang = getParameterByName("lang");
+    if(lang !== null){
+        setCookie("lang", lang, 1);
+    }
+}
+        </script> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
             <style type="text/css">
                 A {
@@ -14,8 +59,9 @@
                  color: red; /* Ссылка красного цвета */
                 } 
             </style>
+            
     </head>
-    <body>   
+    <body onload='onHeaderLoad()'>   
         <%
             Cookie[] cookies = request.getCookies();
             String lang = request.getParameter("lang");

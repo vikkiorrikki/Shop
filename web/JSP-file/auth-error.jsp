@@ -8,41 +8,46 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <c:import url="/JSP-file/header.jsp" />
+        <c:if test = "${cookie.lang.value eq 'ENG' }">
+            <fmt:setLocale value="ENG" />
+            <fmt:setBundle basename="myprop_en_US" var="pageLang"/>
+        </c:if>
+        <c:if test="${cookie.lang.value == 'IT' }">
+            <fmt:setLocale value="IT" />
+            <fmt:setBundle basename="myprop_it_IT" var="pageLang"/>
+        </c:if>
+        <c:if test="${ cookie.lang.value eq  'RU' }">
+            <fmt:setLocale value="RU" />
+            <fmt:setBundle basename="myprop" var="pageLang"/>
+        </c:if>
+        
+        <c:if test = "${param.lang eq 'ENG' }">    
+            <fmt:setLocale value="ENG" />
+            <fmt:setBundle basename="myprop_en_US" var="pageLang"/>
+        </c:if>
+        <c:if test="${param.lang == 'IT' }">
+            <fmt:setLocale value="IT" />
+            <fmt:setBundle basename="myprop_it_IT" var="pageLang" />
+        </c:if>
+        <c:if test="${param.lang eq  'RU' }">
+            <fmt:setLocale value="RU" />
+            <fmt:setBundle basename="myprop" var="pageLang"/>
+        </c:if>
         <title>Authentification fail!</title>
-
+        
     </head>
     <body>
-        <c:import url="/JSP-file/header.jsp" />
-
-        <c:if test="${ empty sessionScope.lang } ">
-            <fmt:setLocale value="RU" />
-        </c:if>
-
-        <c:if test="${ param.lang eq 'RU' ||  sessionScope.lang eq 'RU'}">
-            <fmt:setLocale value="RU"/>
-            <c:set var="lang" value="${ param.lang }" scope="session" />  
-        </c:if>
-        <c:if test="${ param.lang eq 'ENG' ||  sessionScope.lang eq 'ENG' }">
-            <fmt:setLocale value="ENG"/>
-            <c:set var="lang" value="${ param.lang }" scope="session" />
-        </c:if>
-        <c:if test="${ param.lang eq 'IT' ||  sessionScope.lang eq 'IT' }">
-            <fmt:setLocale value="IT"/>
-            <c:set var="lang" value="${ param.lang }" scope="session" />
-        </c:if>
-
-        <fmt:setBundle basename="myprop" />
-
         <div class="welcome">
             <center>
-                <font color='red' face='Calibri' ><big><big><big><fmt:message key="loginError"/></big></big></big></font>
+                <font color='red' face='Calibri' ><big><big><big><fmt:message key="loginError" bundle="${pageLang}"/></big></big></big></font>
             </center>
         </div>
 
         <div class="failMessage" >
             <br>
             <hr>
-            <p> <a href="login"><font color='black' face='Calibri' ><b><fmt:message key="again"/></b></font></a></p>
+            <p> <a href="login"><font color='black' face='Calibri' ><b><fmt:message key="again" bundle="${pageLang}"/></b></font></a></p>
         </div>
 
     </body>
