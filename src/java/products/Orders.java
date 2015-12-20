@@ -1,5 +1,5 @@
 package products;
-// Generated 20-Dec-2015 00:37:43 by Hibernate Tools 4.3.1
+// Generated 20-Dec-2015 19:30:59 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -10,7 +10,7 @@ import java.util.Date;
 public class Orders  implements java.io.Serializable {
 
 
-     private int orderId;
+     private Integer orderId;
      private Date timestamp;
      private String user;
      private String store;
@@ -19,55 +19,60 @@ public class Orders  implements java.io.Serializable {
     public Orders() {
     }
 
-    public Orders( String user, String store, String goods, Date timestamp) {
-       this.timestamp = timestamp;
+    public Orders(String user, String store, String goods, Date timestamp) {
        this.user = user;
        this.store = store;
        this.goods = goods;
+       this.timestamp = timestamp;
     }
-   public Orders( Orders o) {
-       this(o.user, o.store, o.goods, o.timestamp);
-       this.orderId = o.orderId;
+    public Orders(Orders ords) {
+       this.user = ords.user;
+       this.store = ords.store;
+       this.goods = ords.goods;
+       this.orderId = ords.orderId;
+       this.timestamp = ords.timestamp;
     }
-    public int getOrderId() {
-        return this.orderId;
+
+    public Integer getOrderId() {
+        return orderId;
     }
-    
-    public void setOrderId(int orderId) {
+
+    public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
+
     public Date getTimestamp() {
-        return this.timestamp;
+        return timestamp;
     }
-    
+
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
+
     public String getUser() {
-        return this.user;
+        return user;
     }
-    
+
     public void setUser(String user) {
         this.user = user;
     }
+
     public String getStore() {
-        return this.store;
+        return store;
     }
-    
+
     public void setStore(String store) {
         this.store = store;
     }
+
     public String getGoods() {
-        return this.goods;
+        return goods;
     }
-    
+
     public void setGoods(String goods) {
         this.goods = goods;
     }
-
-
-
-
+    
 }
 
 

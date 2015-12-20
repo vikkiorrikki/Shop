@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package products;
+package comments;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.StringTokenizer;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author savinov
  */
-public class OrdersHistoryUpdate extends HttpServlet {
+public class CommentsUpdate extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,61 +35,53 @@ public class OrdersHistoryUpdate extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-              response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession(false);
-        String orderderedProducts = (String)session.getAttribute("orderderedProducts");
-        String user = request.getUserPrincipal().getName();
-        String lang = request.getParameter("lang");
-        System.out.println("OrdersHistoryUpdate");
-        if(orderderedProducts != null) {
-            StringTokenizer tok = new StringTokenizer(orderderedProducts);
-
-            String address = request.getParameter("store");
-            String goods = "";
-            while (tok.hasMoreElements() && address != null) {
-                String product = tok.nextToken();
-                if (!product.equals("null")) {
-                    String countStr = request.getParameter("c"+product);
-                    Integer count = 1;
-                    try{
-                        count = Integer.parseInt(countStr);
-                        if(count <= 0){
-                            count = 1;
-                        }
-                    }catch(Exception e){}
-                    //String address, Date dTimeStamp, String productId, int productcount, String username
-                    //String productId, String address, String username, Date dTimeStamp, int productcount
-                    goods += product + "=" + count+"&";
-                }
-            }
-            if(!goods.isEmpty()){
-                Date date = new Date();
-                OrdersHelper.persist(new Orders( user, address, goods, date));
-            }
-            session.removeAttribute("orderderedProducts");
-        }
         
-        List list = OrdersHelper.getAllByUser(user);
-        List<OrdersOut> out = new ArrayList<>();
+        HttpSession session = request.getSession(false);
+        String text = request.getParameter("text");
+        Principal pr = request.getUserPrincipal();
+        String user = "";
+        if(pr != null){
+            user = pr.getName();
+        }
+        System.out.println("User=" + user);
+        if( user.equals("")){
+            return ;
+        }
+        String lang = request.getParameter("lang");
+        if(text != null && !text.isEmpty()){
+            Comments com = new Comments( user, text, new Date());
+            System.out.println("Comment:" + com);
+            DbUpdater.persist(com);
+        } else {
+            System.out.println("Empty text");
+        }
+        System.out.println("aaaa");
+        List list = DbUpdater.getAllByUser(user);
+        PrintWriter out = response.getWriter();
         if(list != null) {
             for (Iterator iterator = list.iterator(); iterator.hasNext();) {
-                Orders current = (Orders) iterator.next();
-                OrdersOut o = new OrdersOut(current);
-                out.add(o);
+                Comments current = (Comments) iterator.next();
+                StringBuilder builder = new StringBuilder();
+                builder.append("").append(
+                    "<div class='oneComment' >").append(
+                        "<img src='IMG-file/noavatar.jpg' class='profileCommentImg' width=20 height=20 />").
+                        append("<div class='profileCommentNameAndDate'><label class='profileNameComments'>").
+                        append(current.getUser()).
+                        append("</label>").
+                        append("<div class='commentDate'><label>").
+                        append(current.getTimestamp()).
+                        append("</label></div></div>").
+                        append("<br><label class='textComment'>").
+                        append(current.getText()).
+                        append("</label>").
+                        append("</div>" );
+                out.println(builder.toString());
             }
-            System.out.println("list size:" + list.size());
-        } else {
-            System.out.println("list is null");
         }
-        session.setAttribute("history", out);
-        String params ="";
-        if(lang != null){
-            params += "lang=" + lang;
-        }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("userPage?"+params);
-	dispatcher.forward(request, response);
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

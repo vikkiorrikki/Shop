@@ -11,10 +11,13 @@
     <head>
         <script type="text/javascript">
             <c:import url="/JS-file/userPage.js" />
+                <c:import url="/JS-file/header.js" />
         </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>${resources.UserNameHeaderLabel}</title>
+        
         <jsp:useBean id="productBean" class="Bean.ProductBean" scope="session"/>        
+        
         <c:if test = "${cookie.lang.value eq 'ENG' }">
             <fmt:setLocale value="ENG" />
             <c:set var="lang" value="ENG" />
@@ -48,7 +51,7 @@
         </c:if>
     </head>
 
-    <body onload='loadActiveTab()'>
+    <body onload='loadActiveTab();onHeaderLoad();'>
 
         <div>
             <%
@@ -64,30 +67,27 @@
             <div id="left-mini" style="width:20%; height: 100%; float: left">
                 <p>
                     <font face='Calibri'>
-                <big><big><b><label><fmt:message key="userNameLable" /></label></b></big></big>
+                <big><big><b><label><fmt:message key="userNameLable" bundle="${pageLang}" /></label></b></big></big>
                 <big><big><b><label style="font-style: italic"><c:out value="${ sessionScope.userName }"></c:out></label></b></big></big>
                     </font>
                     </p>
                     <img src="IMG-file/noavatar.jpg"  />
                 </div>
 
-                <div id="right-mini" style='width: 60%; height: 100%; float: left'> 
+                <div id="right-mini" style='width: 20%; height: 100%; float: left'> 
                     <br><br>
                     <p>
                         <font face='Calibri'>
-                        <label><fmt:message key="activeTabeLable" />:</label>
+                        <label><fmt:message key="activeTabeLable" bundle="${pageLang}" />:</label>
                     <label id="activeTab"></label>
                     </font>
                 </p>
             </div>
         </div>
-        <div class="deliveryHistory">
+        <div class="deliveryHistory" style='width: 20%; height: 100%; float: left'>
             
             <c:forEach var="a" items="${sessionScope.history}">
                 <c:forEach var="item" items="${a.list}">
-                    <%
-                        System.out.println(pageContext.getAttribute("item"));
-                    %>
                     <jsp:setProperty name="productBean" property="lang" value="${lang}"/>
                     <jsp:setProperty name="productBean" property="productId" value="${item.beanId}"/>
                     <div class="profileOrder">
@@ -104,10 +104,23 @@
                 </c:forEach>
                 <div class="profileDate">${a.timestamp}</div>
                 <div class="profileAddress">
-                    <label class="addressLable"><fmt:message key="shopAddress" />:</label>
+                    <label class="addressLable"><fmt:message key="shopAddress" bundle="${pageLang}" />:</label>
                     <label class="address">${a.store}</label>
                 </div>
+                 <hr>
             </c:forEach>
+               
+        </div>
+        <div id="RESULT" class="commentsList" style='width: 20%; height: 100%; float: left'>
+            
+        </div>
+        <div class="commentDiv">
+            <div class="" >
+                <textarea id="commentText" class="textAreaComment" ></textarea> 
+            </div>
+            <div class="profileSendButton">
+                <button onclick="ajaxRequest()" ><fmt:message key="commentButtonSend" bundle="${pageLang}"/></button>  
+            </div>
         </div>
     </body>
 </html>

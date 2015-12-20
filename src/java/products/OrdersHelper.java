@@ -22,14 +22,14 @@ public class OrdersHelper {
         this.session = NewHibernateUtil.getSessionFactory().getCurrentSession();
     }
 
-    public static void persist(final Orders history) {
+    public static void persist(final Orders order) {
         Session session = null;
         try {
-            System.out.println("h1=" + history.toString());
+            System.out.println("h1=" + order.toString());
             session = NewHibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            System.out.println("h2=" + history.toString());
-            session.save(history);
+            System.out.println("h2=" + order.toString());
+            session.save(order);
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,7 +56,7 @@ public class OrdersHelper {
             session.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("OrdersHelper:" + e.getMessage());
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();

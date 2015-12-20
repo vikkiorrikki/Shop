@@ -7,7 +7,7 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/web?useUnicode=true&amp;characterEncoding=UTF8&amp;characterSetResults=UTF8</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">password</property>
-    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+    <mapping resource="comments/Comments.hbm.xml"/>
     <mapping resource="products/Orders.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

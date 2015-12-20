@@ -3,20 +3,17 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 20-Dec-2015 19:31:00 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="products.Orders" table="orders" catalog="web">
-        <id name="orderId" type="java.lang.Integer">
-            <column name="orderId" />
+    <class name="comments.Comments" table="comments" catalog="web">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
             <generator class="identity" />
         </id>
         <timestamp name="timestamp" column="timestamp" />
         <property name="user" type="string">
             <column name="user" length="30" not-null="true" />
         </property>
-        <property name="store" type="string">
-            <column name="store" length="100" not-null="true" />
-        </property>
-        <property name="goods" type="string">
-            <column name="goods" length="120" not-null="true" />
+        <property name="text" type="string">
+            <column name="text" length="65535" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

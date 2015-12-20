@@ -13,5 +13,30 @@ function loadActiveTab() {
         document.getElementById("activeTab").innerHTML = xhr.responseText;
     };
     xhr.send("body");
+    ajaxRequest();
+}
+
+function ajaxRequest() {
+    var xmlhttp = null;
+    if (window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200){
+            document.getElementById("commentText").value = "";
+            var text = xmlhttp.responseText;
+            document.getElementById("RESULT").innerHTML = text;
+        }
+    };
+    var text = document.getElementById("commentText").value;
+    var param = "";
+    if(text !== null && text !== undefined && text !== ""){
+        param = "text=" + text;
+    }
+    xmlhttp.open("POST", "/Shop/comments?" + param, true);
+    xmlhttp.send();
 }
 

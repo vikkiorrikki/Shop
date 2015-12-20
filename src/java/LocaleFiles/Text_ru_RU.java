@@ -6,7 +6,7 @@ public class Text_ru_RU extends ListResourceBundle {
     static final Object[][] contents = {
                                         {"Login", "Вход"},
                                         {"Bag", "Корзина"},
-                                        {"List","История покупок"},
+                                        {"List","Личный кабинет"},
                                         {"All", "Все категории"},                                        
                                         {"Bags", "Сумки"},
                                         {"Clutches","Клатчи"},
