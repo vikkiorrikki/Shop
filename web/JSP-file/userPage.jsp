@@ -92,7 +92,7 @@
                     <jsp:setProperty name="productBean" property="productId" value="${item.beanId}"/>
                     <div class="profileOrder">
                         <a href="${pageContext.request.contextPath}/product?id=${item.beanId}">
-                            <img src='<jsp:getProperty name="productBean" property="productImage"/>' 
+                            <img src='IMG-file/<jsp:getProperty name="productBean" property="productImage"/>' 
                                  width=40 height=40 />
                         </a>
                     </div>
