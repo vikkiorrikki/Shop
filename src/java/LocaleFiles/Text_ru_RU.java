@@ -26,6 +26,8 @@ public class Text_ru_RU extends ListResourceBundle {
                                         {"Logout", "Выход"},
                                         {"OrderInCart", "нажмите сюда"},
                                         {"UserNameHeaderLabel", "Пользователь"},
+                                        {"chooseProducts","Добавьте товары в корзину"},
+                                        {"emptyCart","Корзина пуста"},
                                         // Card1
                                         {"NameBag1","Разноцветная сумка SICILY"},
                                         {"ProductImage1","IMG-file/bag-mini.JPG"},

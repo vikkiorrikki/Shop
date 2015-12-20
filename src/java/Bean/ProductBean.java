@@ -28,6 +28,8 @@ public class ProductBean implements Serializable{
     }
     public void setProductId(String productId) {
         this.productId = productId;
+        System.out.println("set productId=" + productId);
+        update();
     }   
     public String getGroupOfProduct() {
         return groupOfProduct;
@@ -93,11 +95,9 @@ public class ProductBean implements Serializable{
     public ProductBean() {
         this.amount = 0;
     }
-    
-    public ProductBean(String productId, String language) {
-        setLang(language);
+    private void update(){
+        System.out.println("lang=" + lang);
         ResourceBundle resourceBundle = lang.getLocaleFile();
-        this.productId = productId;
         this.groupOfProduct = resourceBundle.getString("Type"+ productId);
         this.productImage = resourceBundle.getString("ProductImage"+ productId);
         this.nameBag = resourceBundle.getString("NameBag" + productId);
@@ -107,6 +107,12 @@ public class ProductBean implements Serializable{
         this.description3 = resourceBundle.getString("Description3"+ productId);
         this.description4 = resourceBundle.getString("Description4"+ productId);
         this.amount = 0;
+        System.out.println("end" );
+    }
+    public ProductBean(String productId, String language) {
+        setLang(language);
+        this.productId = productId;
+        update();
     }
 
 }

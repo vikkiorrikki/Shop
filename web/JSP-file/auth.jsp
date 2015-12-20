@@ -62,7 +62,7 @@
             <form action="j_security_check" method="post" >
                 <input type="text" name="j_username" size="25" > <br><br>
                 <input type="password" name="j_password" size="25" > <br>
-                <input type="hidden" name="lang" value="${ lang }" >
+                <!--<input type="hidden" name="lang" value="${ lang }" >-->
                 <input class="authButton" type="submit" value="<fmt:message key="AuthEnter" bundle="${pageLang}"/>">
             </form>
 

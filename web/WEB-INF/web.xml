@@ -19,6 +19,14 @@
         <servlet-name>AuthServlet</servlet-name>
         <servlet-class>AuthServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Tmp</servlet-name>
+        <servlet-class>products.Tmp</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrdersHistoryUpdate</servlet-name>
+        <servlet-class>products.OrdersHistoryUpdate</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet1</servlet-name>
         <url-pattern>/Servlet1</url-pattern>
@@ -27,6 +35,14 @@
         <servlet-name>newjsp</servlet-name>
         <jsp-file>/JSP-file/newjsp.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>chooseMarket</servlet-name>
+        <jsp-file>/JSP-file/chooseMarket.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>chooseMarket</servlet-name>
+        <url-pattern>/markets</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>userPage</servlet-name>
         <jsp-file>/JSP-file/userPage.jsp</jsp-file>
@@ -44,7 +60,6 @@
         <servlet-name>Cart</servlet-name>
         <url-pattern>/Cart</url-pattern>
         <url-pattern>/enterToCart</url-pattern>
-        
     </servlet-mapping>
     <servlet>
         <servlet-name>Login</servlet-name>
@@ -75,6 +90,15 @@
         <servlet-name>userPage</servlet-name>
         <url-pattern>/userPage</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Tmp</servlet-name>
+        <url-pattern>/Tmp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrdersHistoryUpdate</servlet-name>
+        <url-pattern>/buy</url-pattern>
+        <url-pattern>/userPageWithHistory</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -82,25 +106,24 @@
     </session-config>
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>
-                ALL ACCESS
-            </web-resource-name>
             <url-pattern>/enterToProducts</url-pattern>
             <url-pattern>/enterToCart</url-pattern>
-            <http-method>GET</http-method>
+            <url-pattern>/buy</url-pattern>
+            <url-pattern>/markets</url-pattern>
+            <url-pattern>/userPageWithHistory</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>*</role-name>
+            <role-name>tomcat</role-name>
         </auth-constraint>
     </security-constraint>
     <security-role>
-        <role-name>*</role-name>
+        <role-name>tomcat</role-name>
     </security-role>
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>
-            <form-login-page>/login</form-login-page>
-            <form-error-page>/login-error</form-error-page>
+            <form-login-page>/JSP-file/auth.jsp</form-login-page>
+            <form-error-page>/JSP-file/auth-error.jsp</form-error-page>
         </form-login-config>
     </login-config>
 </web-app>

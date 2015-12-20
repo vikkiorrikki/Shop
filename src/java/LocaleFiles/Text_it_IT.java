@@ -26,6 +26,8 @@ public class Text_it_IT extends ListResourceBundle {
                                         {"Logout", "Disconnettersi"},
                                         {"OrderInCart", "Ordine nel carrello"},
                                         {"UserNameHeaderLabel", "Nome utente"},
+                                        {"chooseProducts","Add goods to cart"},
+                                        {"emptyCart","Cart is empty"},
                                         // Card1
                                         {"NameBag1","Multicolore borsa SICILY"},
                                         {"ProductImage1","IMG-file/bag-mini.JPG"},

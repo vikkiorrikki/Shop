@@ -46,3 +46,23 @@ function calcSumm(prefix) {
     }
     document.getElementById("cartTotal").innerHTML = summary;
 }
+
+function goToTheMarkets(prefix){
+    var allBeans = document.getElementById("allBeansList").innerHTML;
+    var arr = allBeans.split(" ");
+    var params = ""
+    for (var i = 0; i < arr.length; i++) {
+        var id = prefix + arr[i];
+        var elem = document.getElementById(id);
+        if (elem === undefined || elem === null) {
+            continue;
+        }
+        var inh = elem.value;
+        var value = parseInt(inh);
+        if (!isNaN(value)) {
+            params += "c" + arr[i] + "=" + value + "&";
+        }
+    }
+    var url = "http://" + window.location.host + "/Shop/markets?";
+    window.location.href = (url + params);
+}

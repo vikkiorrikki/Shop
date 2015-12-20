@@ -57,19 +57,29 @@
                 </c:forEach>
             <p id="allBeansList" hidden >${allBeans}</p>
             
-            
-            <label>${resources.FinalPrice}:</label>
-            <label id="cartTotal" style='color: red'>0</label>
-            <c:set var="userName" value="${ sessionScope.userName }" />
-            <p>
-                <label>${resources.ForOrder} </label>
-                <c:if test="${empty userName}">
-                    <a onclick="window.location.href='enterToCart'">
-                        <button>${resources.AuthBuy}</button>
-                        </a>
+                <c:set var="userName" value="${ sessionScope.userName }" />
+                <c:if test="${not empty allBeans }">
+                    <label>${resources.FinalPrice}:</label>
+                    <p>
+                    <label id="cartTotal" style='color: red'>0</label>
+                    <p>
+                    <label>${resources.ForOrder} </label>
+                    <c:if test="${empty userName }">
+                        <a onclick="window.location.href='enterToCart'">
+                            <button>${resources.AuthBuy}</button>
+                            </a>
+                    </c:if>
+                    <c:if test="${not empty userName }">
+                        <button onclick="goToTheMarkets('count_')">${resources.OrderInCart}</button>
+                    </c:if>
                 </c:if>
-                <c:if test="${not empty userName}">
-                    <button>${resources.OrderInCart}</button>
+                <c:if test="${empty allBeans }">
+                    <label>${resources.emptyCart} </label>
+                    <p>
+                    <label>${resources.ForOrder} </label>
+                    <a onclick="window.location.href='productList'">
+                    <button>${resources.chooseProducts}</button>
+                    </a>
                 </c:if>
             </p>
 

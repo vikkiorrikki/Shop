@@ -27,6 +27,8 @@ public class Text_en_US extends ListResourceBundle {
                                         {"OrderInCart", "OrderInCart"},
                                         {"UserNameHeaderLabel", "User name"},
                                         {"userNameLable","Пользовdddddатель"},
+                                        {"chooseProducts","Add goods to cart"},
+                                        {"emptyCart","Cart is empty"},
                                         // Card1
                                         {"NameBag1","Colorful bag SICILY"},
                                         {"ProductImage1","IMG-file/bag-mini.JPG"},

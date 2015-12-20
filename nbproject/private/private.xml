@@ -3,12 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/5s/web/Shop/web/JS-file/product.js</file>
-            <file>file:/D:/5s/web/Shop/web/JSP-file/newjsp.jsp</file>
-            <file>file:/D:/5s/web/Shop/src/java/Bean/TypeF.java</file>
-            <file>file:/D:/5s/web/Shop/src/java/LocaleFiles/Text_en_US.java</file>
-            <file>file:/D:/5s/web/Shop/web/JSP-file/header.jsp</file>
-            <file>file:/D:/5s/web/Shop/src/java/Servlet1.java</file>
+            <file>file:/C:/Users/savinov/projects/Shop/src/java/products/Orders.java</file>
+            <file>file:/C:/Users/savinov/projects/Shop/web/JS-file/userPage.js</file>
+            <file>file:/C:/Users/savinov/projects/Shop/src/java/products/OrdersOut.java</file>
+            <file>file:/C:/Users/savinov/projects/Shop/web/JS-file/cart.js</file>
+            <file>file:/C:/Users/savinov/projects/Shop/src/java/Bean/ProductBean.java</file>
+            <file>file:/C:/Users/savinov/projects/Shop/web/JSP-file/userPage.jsp</file>
+            <file>file:/C:/Users/savinov/projects/Shop/web/JS-file/chooseMarket.js</file>
+            <file>file:/C:/Users/savinov/projects/Shop/web/JS-file/product.js</file>
+            <file>file:/C:/Users/savinov/projects/Shop/web/JSP-file/chooseMarket.jsp</file>
+            <file>file:/C:/Users/savinov/projects/Shop/src/java/products/OrdersHistoryUpdate.java</file>
         </group>
     </open-files>
 </project-private>

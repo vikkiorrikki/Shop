@@ -56,7 +56,7 @@
         <form>
             <label><font color='black' size='3pt' face='Calibri'>
                 ${resources.CartProductCount}:</font>
-                <input type="number" min="1" max="20" 
+                <input type="number" min="1" max="20" id="count_${beanId}"
                        size="5" value="1" onchange="calc('${ price }', 'summ_', '${beanId}', this)">
             </label>
             <p><label><font color='black' size='3pt' face='Calibri'>${resources.FinalPrice}:</font></label>

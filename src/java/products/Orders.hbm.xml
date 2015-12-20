@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-Dec-2015 00:37:45 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="products.Orders" table="orders" catalog="web">
+        <id name="orderId" type="int">
+            <column name="orderId" />
+            <generator class="assigned" />
+        </id>
+        <timestamp name="timestamp" column="timestamp" />
+        <property name="user" type="string">
+            <column name="user" length="30" not-null="true" />
+        </property>
+        <property name="store" type="string">
+            <column name="store" length="100" not-null="true" />
+        </property>
+        <property name="goods" type="string">
+            <column name="goods" length="120" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
