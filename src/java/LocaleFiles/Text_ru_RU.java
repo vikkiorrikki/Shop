@@ -75,7 +75,7 @@ public class Text_ru_RU extends ListResourceBundle {
                                         {"Type5","backpacks"},
                                                                                 
                                         // Card6
-                                        {"NameBag6","Парчовая сумка DOLCE BOX с декором"},
+                                        {"NameBag6","Парчовая сумка DOLCE BOX"},
                                         {"ProductImage6","IMG-file/clatch2-mini.JPG"},
                                         {"Price6","5180"},
                                         {"Description16","Цвет: Red"},                                        
@@ -103,7 +103,7 @@ public class Text_ru_RU extends ListResourceBundle {
                                         {"Description48","Из кружева макраме"},
                                         {"Type8","clutches"},
                                         // Card9
-                                        {"NameBag9","Средняя сумка SICILY с аппликацией \"Семья\""},
+                                        {"NameBag9","Средняя сумка SICILY с аппликацией"},
                                         {"ProductImage9","IMG-file/bag2-mini.JPG"},
                                         {"Price9","2160"},
                                         {"Description19","Цвет: Blue"},                                        

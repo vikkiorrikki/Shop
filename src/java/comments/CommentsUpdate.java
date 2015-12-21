@@ -67,7 +67,7 @@ public class CommentsUpdate extends HttpServlet {
                 StringBuilder builder = new StringBuilder();
                 builder.append("").append(
                     "<div class='oneComment' >").append(
-                        "<img src='IMG-file/noavatar.jpg' class='profileCommentImg' width=20 height=20 />").
+                        "<img src='IMG-file/noavatar.jpg' class='profileCommentImg' width=40 height=40 />").
                         append("<div class='profileCommentNameAndDate'><label class='profileNameComments'>").
                         append(current.getUser()).
                         append("</label>").
@@ -77,6 +77,7 @@ public class CommentsUpdate extends HttpServlet {
                         append("<br><label class='textComment'>").
                         append(current.getText()).
                         append("</label>").
+                        append("<hr style=\"width: 80%\">").
                         append("</div>" );
                 out.println(builder.toString());
             }

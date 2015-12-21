@@ -52,7 +52,7 @@
         <p><font color='black' size='2pt' face='Calibri'><c:out value="${ description4 }" /></font></p>
     </div>
 
-    <div id="right-mini" style='width: 30%; height: 100%; float: left'>    
+    <div style='width: 30%; height: 100%; float: left'>    
         <form>
             <label><font color='black' size='3pt' face='Calibri'>
                 ${resources.CartProductCount}:</font>

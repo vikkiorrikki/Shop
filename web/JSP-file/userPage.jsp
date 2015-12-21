@@ -52,8 +52,7 @@
     </head>
 
     <body onload='loadActiveTab();onHeaderLoad();'>
-
-        <div>
+        
             <%
                 request.setCharacterEncoding("UTF-8");
                 response.setCharacterEncoding("UTF-8");
@@ -64,7 +63,7 @@
 
             <c:import url="/JSP-file/header.jsp" />
 
-            <div id="left-mini" style="width:20%; height: 100%; float: left">
+            <div id="left-mini" style="width:20%; height: 40%; float: left">
                 <p>
                     <font face='Calibri'>
                 <big><big><b><label><fmt:message key="userNameLable" bundle="${pageLang}" /></label></b></big></big>
@@ -72,9 +71,7 @@
                     </font>
                     </p>
                     <img src="IMG-file/noavatar.jpg"  />
-                </div>
-
-                <div id="right-mini" style='width: 20%; height: 100%; float: left'> 
+                
                     <br><br>
                     <p>
                         <font face='Calibri'>
@@ -83,38 +80,49 @@
                     </font>
                 </p>
             </div>
-        </div>
-        <div class="deliveryHistory" style='width: 20%; height: 100%; float: left'>
+    
+        <div class="deliveryHistory" style='width: 60%; float: left'>
             
             <c:forEach var="a" items="${sessionScope.history}">
                 <c:forEach var="item" items="${a.list}">
+                    <div style='width: 30%; height: 50%; float: left'>                
                     <jsp:setProperty name="productBean" property="lang" value="${lang}"/>
                     <jsp:setProperty name="productBean" property="productId" value="${item.beanId}"/>
                     <div class="profileOrder">
-                        <a href="${pageContext.request.contextPath}/product?id=${item.beanId}">
+                        <a href="${pageContext.request.contextPath}/Servlet1?lang=${lang}&id=${item.beanId}">
                             <img src='IMG-file/<jsp:getProperty name="productBean" property="productImage"/>' 
-                                 width=40 height=40 />
+                                 width=200 height=150 />
                         </a>
                     </div>
-                    <a class="profileProductItem" href='${pageContext.request.contextPath}/product?id=${item.beanId}'>
+                    <a class="profileProductItem" href='${pageContext.request.contextPath}/Servlet1?lang=${lang}&id=${item.beanId}'>
+                        <font color='black' face='Calibri' >
                         <jsp:getProperty name="productBean" property ="nameBag"/>
+                        </font>
                     </a>
-                    <lable>Count:</lable>
-                    <lable>${item.count}</lable>
+                    <p>
+                    <font color='black' face='Calibri' >
+                        <lable>Count:</lable>
+                        <lable>${item.count}</lable>
+                    </font>
+                    </div>
                 </c:forEach>
-                <div class="profileDate">${a.timestamp}</div>
-                <div class="profileAddress">
-                    <label class="addressLable"><fmt:message key="shopAddress" bundle="${pageLang}" />:</label>
-                    <label class="address">${a.store}</label>
-                </div>
-                 <hr>
+                <font color='black' face='Calibri' >        
+                    <div class="profileDate">${a.timestamp}</div>
+                    <div class="profileAddress">
+                        <label class="addressLable"><fmt:message key="shopAddress" bundle="${pageLang}" />:</label>
+                        <label class="address">${a.store}</label>
+                    </div>
+                </font>
+                <hr style="width: 80%">
+             
             </c:forEach>
                
         </div>
+
         <div id="RESULT" class="commentsList" style='width: 20%; height: 100%; float: left'>
             
         </div>
-        <div class="commentDiv">
+        <div class="commentDiv" style='width: 10%; height: 100%; float: left'>
             <div class="" >
                 <textarea id="commentText" class="textAreaComment" ></textarea> 
             </div>

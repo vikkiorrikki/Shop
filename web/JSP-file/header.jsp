@@ -53,12 +53,13 @@
 %>
 
 <div style='width: 100%;
-     height: 80px;
+     height: 100px;
      background-color: #deedfb'>
     <p>
         <a onclick="window.location.href = '/Shop'">
             <font color='black' face='Calibri' size='350%'> HandBag </font>
         </a>
+
         <a href='<%= urlForButtonToCabinet%>'>
             <button style='float: right'><%=resourceBundle.getString("List")%></button>
         </a>

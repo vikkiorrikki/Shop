@@ -24,10 +24,10 @@ public class Text_it_IT extends ListResourceBundle {
                                         {"loginError", "Errore di accesso"},
                                         {"again", "Effettuare nuovamente l'accesso"},
                                         {"Logout", "Disconnettersi"},
-                                        {"OrderInCart", "Ordine nel carrello"},
+                                        {"OrderInCart", "clicca qui"},
                                         {"UserNameHeaderLabel", "Nome utente"},
-                                        {"chooseProducts","Add goods to cart"},
-                                        {"emptyCart","Cart is empty"},
+                                        {"chooseProducts","Aggiungi merci al carrello"},
+                                        {"emptyCart","Il carrello è vuoto"},
                                         // Card1
                                         {"NameBag1","Multicolore borsa SICILY"},
                                         {"ProductImage1","IMG-file/bag-mini.JPG"},
@@ -76,7 +76,7 @@ public class Text_it_IT extends ListResourceBundle {
                                         {"Description45","Leopard print"},
                                         {"Type5","backpacks"},                                       
                                         // Card6
-                                        {"NameBag6","Turchese Borsa DOLCE BOX con decorazioni"},
+                                        {"NameBag6","Turchese Borsa DOLCE BOX"},
                                         {"ProductImage6","IMG-file/clatch2-mini.JPG"},
                                         {"Price6","5180"},
                                         {"Description16","Colore: Rosso"},                                        
@@ -104,7 +104,7 @@ public class Text_it_IT extends ListResourceBundle {
                                         {"Description48","Pizzi macramè"},
                                         {"Type8","clutches"},
                                         // Card9
-                                        {"NameBag9","Borsa media SICILY con applique \"Famiglia\""},
+                                        {"NameBag9","Borsa media SICILY con applique"},
                                         {"ProductImage9","IMG-file/bag2-mini.JPG"},
                                         {"Price9","2160"},
                                         {"Description19","Colore: Blu"},                                        

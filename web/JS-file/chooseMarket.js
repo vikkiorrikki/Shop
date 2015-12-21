@@ -10,8 +10,8 @@ function initialize() {
     var mapc = document.getElementById('map');
     var map = new google.maps.Map(mapc, myOptions);
 
-    var contentStringShopOne = '<div id="content">Chernaya</div>';
-    var contentStringShopTwo = '<div id="content">Pionera</div>';
+    var contentStringShopOne = '<div id="content">Chernaya rechka</div>';
+    var contentStringShopTwo = '<div id="content">Pionerskaya</div>';
 
     var infowindowShopOne = new google.maps.InfoWindow({
         content: contentStringShopOne
@@ -23,30 +23,30 @@ function initialize() {
     var markerShopOne = new google.maps.Marker({
         position: shopOne,
         map: map,
-        title: 'Pionera'
+        title: 'Pionerskaya'
     });
     var markerShopTwo = new google.maps.Marker({
         position: shopTwo,
         map: map,
-        title: 'Chernaya'
+        title: 'Chernaya rechka'
     });
 
     google.maps.event.addListener(markerShopOne, 'click', function () {
         // infowindowShopOne.open(map, markerShopOne);
 
-        document.getElementById("1").value = "Pionera";
+        document.getElementById("1").value = "Pionerskaya";
     });
 
     google.maps.event.addListener(markerShopTwo, 'click', function () {
         // infowindowShopTwo.open(map,markerShopTwo);
 
-        document.getElementById("1").value = "Chernaya";
+        document.getElementById("1").value = "Chernaya rechka";
     });
 }
 
 function checkAddress() {
     if (document.getElementById("1").value === "")
-        document.getElementById("1").value = "Pionera";
+        document.getElementById("1").value = "Pionerskaya";
 
 }
 

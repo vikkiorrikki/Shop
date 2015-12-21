@@ -24,9 +24,9 @@ public class Text_en_US extends ListResourceBundle {
                                         {"loginError", "Login error"},
                                         {"again", "Login again"},
                                         {"Logout", "Logout"},
-                                        {"OrderInCart", "OrderInCart"},
+                                        {"OrderInCart", "click here"},
                                         {"UserNameHeaderLabel", "User name"},
-                                        {"userNameLable","Пользовdddddатель"},
+                                        {"userNameLable","User name"},
                                         {"chooseProducts","Add goods to cart"},
                                         {"emptyCart","Cart is empty"},
                                         // Card1
